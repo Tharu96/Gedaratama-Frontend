@@ -1,9 +1,5 @@
-
-
-
-
 <template>
-  <div id="app">
+  <div id="app" class="h-100">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a href class="navbar-brand" @click.prevent>GEDARATAMA</a>
       <div class="navbar-nav mr-auto">
@@ -51,8 +47,16 @@
       </div>
     </nav>
 
-    <div class="container">
-      <router-view />
+    
+
+    <div class="container-fluid h-100">
+       <div class="row h-100">
+        <div class="col-md-3 vue-bg h-100 d-flex justify-content-center align-items-center">
+          <img alt="Vue logo" src="./assets/logo.png">
+        </div>
+      
+        <router-view />
+       </div>
     </div>
   </div>
 </template>
@@ -94,6 +98,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+}
+
+.vue-bg{
+  background: #bce5d0;
 }
 </style>

@@ -20,8 +20,10 @@
             <div
               v-if="submitted && errors.has('username')"
               class="alert-danger"
-            >{{errors.first('username')}}</div>
+            >{{errors.first('username')}}
+            </div>
           </div>
+
           <div class="form-group">
             <label for="email">Email</label>
             <input
@@ -34,8 +36,10 @@
             <div
               v-if="submitted && errors.has('email')"
               class="alert-danger"
-            >{{errors.first('email')}}</div>
+            >{{errors.first('email')}}
+            </div>
           </div>
+
           <div class="form-group">
             <label for="password">Password</label>
             <input
@@ -50,6 +54,7 @@
               class="alert-danger"
             >{{errors.first('password')}}</div>
           </div>
+
           <div class="form-group">
             <button class="btn btn-primary btn-block">Sign Up</button>
           </div>
@@ -60,7 +65,8 @@
         v-if="message"
         class="alert"
         :class="successful ? 'alert-success' : 'alert-danger'"
-      >{{message}}</div>
+      >{{message}}
+      </div>
     </div>
   </div>
 </template>

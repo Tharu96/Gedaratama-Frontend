@@ -1,9 +1,12 @@
 import AuthService from '../services/auth.service';
 
 const user = JSON.parse(localStorage.getItem('user'));
+
 const initialState = user
   ? { status: { loggedIn: true }, user }
   : { status: { loggedIn: false }, user: null };
+
+
 
 export const auth = {
   namespaced: true,
@@ -40,7 +43,23 @@ export const auth = {
           return Promise.reject(error);
         }
       );
-    }
+    },
+
+    shopRegister({ commit }, shop) {
+      console.log(shop.shopname);
+      console.log(shop.email);
+      console.log(shop.password);
+    return AuthService.shopRegister(shop).then(
+      response => {
+        commit('registerSuccess');
+        return Promise.resolve(response.data);
+      },
+      error => {
+        commit('registerFailure');
+        return Promise.reject(error);
+      }
+    );
+  }
   },
   mutations: {
     loginSuccess(state, user) {
