@@ -1,4 +1,6 @@
 <template>
+ <div class="col-md-6 h-100 d-flex justify-content-center align-items-center ">
+    
   <div class="col-md-12">
     <div class="card card-container">
       <img
@@ -8,7 +10,7 @@
       />
       <form name="form" @submit.prevent="handleLogin">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email" class="col-form-label col-form-lebal-lg">Email<span class="text-danger">*</span></label>
           <input
             v-model="user.email"
             v-validate="'required'"
@@ -49,6 +51,8 @@
       </form>
     </div>
   </div>
+    </div>
+ 
 </template>
 
 <script>
@@ -114,7 +118,7 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #fff;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;

@@ -37,6 +37,22 @@ class AuthService {
       password: user.password
     });
   }
+
+  shopRegister(shop) {
+    console.log(shop.shopname);
+    console.log(shop.email);
+    console.log(shop.password);
+    return axios.post(API_URL + 'register', {
+      shopname :shop.shopname,
+      location :shop.location,
+      bid : shop.bid,
+      mobile_no : shop.mobile_no,
+      email : shop.email,
+      shop_owner_name : shop.shop_owner_name,
+      nic : shop.nic,
+      password : shop.password
+    });
+  }
 }
 
 export default new AuthService();
