@@ -25,6 +25,11 @@
             <font-awesome-icon icon="user-plus" />Sign Up
           </router-link>
         </li>
+        <!-- <li class="nav-item">
+          <router-link to="/ShopRegister" class="nav-link">
+            <font-awesome-icon icon="user-plus" />Shop Sign Up
+          </router-link>
+        </li>-->
         <li class="nav-item">
           <router-link to="/login" class="nav-link">
             <font-awesome-icon icon="sign-in-alt" />Login
@@ -47,16 +52,8 @@
       </div>
     </nav>
 
-    
-
     <div class="container-fluid h-100">
-       <div class="row h-100">
-        <div class="col-md-3 vue-bg h-100 d-flex justify-content-center align-items-center">
-          <img alt="Vue logo" src="./assets/logo.png">
-        </div>
-      
-        <router-view />
-       </div>
+      <router-view />
     </div>
   </div>
 </template>
@@ -69,14 +66,14 @@ export default {
     },
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes('ROLE_ADMIN');
+        return this.currentUser.roles.includes("ROLE_ADMIN");
       }
 
       return false;
     },
     showModeratorBoard() {
       if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes('ROLE_MODERATOR');
+        return this.currentUser.roles.includes("ROLE_MODERATOR");
       }
 
       return false;
@@ -84,8 +81,8 @@ export default {
   },
   methods: {
     logOut() {
-      this.$store.dispatch('auth/logout');
-      this.$router.push('/login');
+      this.$store.dispatch("auth/logout");
+      this.$router.push("/login");
     }
   }
 };
@@ -101,7 +98,7 @@ export default {
   margin-top: 0px;
 }
 
-.vue-bg{
+.vue-bg {
   background: #bce5d0;
 }
 </style>

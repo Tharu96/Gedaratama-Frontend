@@ -12,6 +12,17 @@
 import Vue from 'vue';
 import App from './App.vue';
 import { router } from './router';
+
+// Plugins
+import GlobalComponents from "./globalComponents";
+import GlobalDirectives from "./globalDirectives";
+import Notifications from "./components/NotificationPlugin";
+
+// MaterialDashboard plugin
+import MaterialDashboard from "./material-dashboard";
+
+import Chartist from "chartist";
+
 import store from './store';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,6 +42,13 @@ library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$Chartist = Chartist;
+
+Vue.use(MaterialDashboard);
+Vue.use(GlobalComponents);
+Vue.use(GlobalDirectives);
+Vue.use(Notifications);
+
 Vue.use(Vuelidate);
 Vue.use(VeeValidate);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -38,5 +56,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  data: {
+    Chartist: Chartist
+  }
+
 }).$mount('#app');

@@ -51,12 +51,12 @@ export const router = new Router({
       // lazy-loaded
       component: () => import('./views/BoardAdmin.vue')
     },
-    {
-      path: '/shop',
-      name: 'shop',
-      // lazy-loaded
-      component: () => import('./views/Shop.vue')
-    },
+    // {
+    //   path: '/shop',
+    //   name: 'shop',
+    //   // lazy-loaded
+    //   component: () => import('./views/Shop.vue')
+    // },
     {
       path: '/user',
       name: 'user',

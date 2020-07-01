@@ -1,4 +1,5 @@
 <template>
+  <div class="col-md-6 h-100 d-flex justify-content-center align-items-center ">
   <div class="col-md-12">
     <div class="card card-container">
       <img
@@ -69,6 +70,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -132,7 +134,7 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #fff;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;

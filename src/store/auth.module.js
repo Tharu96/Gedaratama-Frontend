@@ -45,11 +45,11 @@ export const auth = {
       );
     },
 
-    shopRegister({ commit }, shop) {
-      console.log(shop.shopname);
+    pendingShopRegister({ commit }, shop) {
+       console.log(shop.shopname);
       console.log(shop.email);
-      console.log(shop.password);
-    return AuthService.shopRegister(shop).then(
+     console.log(shop.password);
+    return AuthService.pendingShopRegister(shop).then(
       response => {
         commit('registerSuccess');
         return Promise.resolve(response.data);
