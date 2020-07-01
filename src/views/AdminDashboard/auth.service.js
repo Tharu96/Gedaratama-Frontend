@@ -57,6 +57,11 @@ class AuthService {
   getAllPendingShops(){
     return axios.get(API_URL + 'pending_shops/un_published');
   }
+
+  acceptPendingShop(uuid){
+    console.log(uuid);
+    return axios.post(API_URL + 'pending_shops/{uuid}');
+  }
 }
 
 export default new AuthService();
