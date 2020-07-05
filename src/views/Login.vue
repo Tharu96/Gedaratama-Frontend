@@ -1,63 +1,78 @@
 <template>
-  <div class="row h-100">
-    <div class="col-md-3 vue-bg h-100 d-flex justify-content-center align-items-center">
-      <img alt="Vue logo" src="../assets/logo.png" />
-    </div>
-    <div class="col-md-6 h-100 d-flex justify-content-center align-items-center">
-      <div class="col-md-12">
-        <div class="card card-container">
-          <img
-            id="profile-img"
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            class="profile-img-card"
-          />
-          <form name="form" @submit.prevent="handleLogin">
-            <div class="form-group">
-              <label for="email" class="col-form-label col-form-lebal-lg">
-                Email
+  <div class="wrapper">
+    <div class="section page-header header-filter" :style="headerStyle">
+      <div class="container">
+        <div class="md-layout">
+          <div
+            class="md-layout-item md-size-30 md-small-size-66 md-xsmall-size-100 md-medium-size-40 mx-auto"
+          >
+            <login-card header-color="green" >
+              <h4 slot="title" class="card-title">Login</h4>
+              <md-button
+                slot="buttons"
+                href="javascript:void(0)"
+                class="md-just-icon md-simple md-white"
+              >
+                <i class="fab fa-facebook-square"></i>
+              </md-button>
+              <md-button
+                slot="buttons"
+                href="javascript:void(0)"
+                class="md-just-icon md-simple md-white"
+              >
+                <i class="fab fa-twitter"></i>
+              </md-button>
+              <md-button
+                slot="buttons"
+                href="javascript:void(0)"
+                class="md-just-icon md-simple md-white"
+              >
+                <i class="fab fa-google-plus-g"></i>
+              </md-button>
+              <p slot="description" class="description"></p>
+
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>email</md-icon>
+                <label>Email...</label>
                 <span class="text-danger">*</span>
-              </label>
-              <input
-                v-model="user.email"
-                v-validate="'required'"
-                type="text"
-                class="form-control"
-                name="email"
-              />
-              <div
+                <md-input 
+                v-model="user.email" 
+                v-validate="'required'" 
+                type="email"
+                name="email">
+                </md-input>
+                <div
                 v-if="errors.has('email')"
                 class="alert alert-danger"
                 role="alert"
               >Email is required!</div>
-            </div>
-            <div class="form-group">
-              <label for="password">
-                Password
-                <span class="text-danger">*</span>
-              </label>
-              <input
+              </md-field>
+
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password...</label>
+                 <span class="text-danger">*</span>
+                <md-input 
                 v-model="user.password"
-                v-validate="'required'"
-                type="password"
-                class="form-control"
-                name="password"
-              />
-              <div
+                 v-validate="'required'" 
+                 type="password"
+                 name="password">
+                 </md-input>
+                 <div
                 v-if="errors.has('password')"
                 class="alert alert-danger"
                 role="alert"
               >Password is required!</div>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-block" :disabled="loading">
-                <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-                <span>Login</span>
-              </button>
-            </div>
-            <div class="form-group">
+              </md-field>
+              <md-button slot="footer" v-on:click="handleLogin()" class="md-simple md-success md-lg" :disabled="loading">
+               <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+                LOGIN
+              </md-button>
+               <div class="form-group">
               <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
             </div>
-          </form>
+            </login-card>
+          </div>
         </div>
       </div>
     </div>
@@ -65,10 +80,14 @@
 </template>
 
 <script>
+import { LoginCard } from "@/components2";
 import User from "../models/user";
 
 export default {
-  name: "Login",
+  components: {
+    LoginCard
+  },
+  bodyClass: "login-page",
   data() {
     return {
       user: new User("", ""),
@@ -76,7 +95,18 @@ export default {
       message: ""
     };
   },
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/img/homepage4.jpeg")
+    }
+  },
   computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`
+      };
+    },
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     }
@@ -115,37 +145,11 @@ export default {
 };
 </script>
 
-<style scoped>
-label {
-  display: block;
-  margin-top: 10px;
+<style lang="css">
+.md-layout-item{
+     justify-content: left !important;
 }
 
-.card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
-}
 
-.card {
-  background-color: #fff;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
 
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
 </style>

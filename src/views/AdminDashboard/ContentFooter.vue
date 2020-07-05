@@ -4,7 +4,7 @@
       <nav>
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">Creative Tim</a>
+            <a href="https://www.creative-tim.com">GEDARATAMA</a>
           </li>
           <li>
             <a href="https://creative-tim.com/presentation">
@@ -16,18 +16,18 @@
               Blog
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="https://www.creative-tim.com/license">
-              Licenses
+              L
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div class="copyright text-center">
         &copy; {{ new Date().getFullYear() }}
         <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank"
-          >Creative Tim</a
-        >, made with <i class="fa fa-heart heart"></i> for a better web
+          >GEDARATAMA</a
+        >, We shop, We deliver, You relax <i class="fa fa-heart heart"></i> for a better Shopping experience.
       </div>
     </div>
   </footer>

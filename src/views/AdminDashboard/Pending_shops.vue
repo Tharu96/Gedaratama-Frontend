@@ -40,7 +40,9 @@
                           id="delete"
                           style="border:0;"
                           onclick="return confirm('Are you sure you want to delete?')"
+                           @click="deletePendingShop(item.uuid)"
                         >
+                        
                           <i class="material-icons">delete_forever</i>
                         </button>
                       </a>
@@ -73,6 +75,10 @@ export default {
     };
   },
 
+   mounted() {
+    this.retrievePendingShops();
+  },
+
   methods: {
     retrievePendingShops() {
       AuthService.getAllPendingShops()
@@ -100,13 +106,32 @@ export default {
                 error.toString();
               this.successful = false;
             }
-        )
-
+        );
+    },
+    deletePendingShop(uuid){
+      console.log(uuid);
+       this.message = "";
+       AuthService.deletePendingShop(uuid)
+        .then(data => {
+              this.message = data.message;
+              this.successful = true;
+            },
+            error => {
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+              this.successful = false;
+            }
+        );
     }
-  },
 
-  mounted() {
-    this.retrievePendingShops();
   }
+
+ 
+  
+  
+    
+ 
 };
 </script>

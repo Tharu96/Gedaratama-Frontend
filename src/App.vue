@@ -52,7 +52,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid h-100">
+    <div >
       <router-view />
     </div>
   </div>

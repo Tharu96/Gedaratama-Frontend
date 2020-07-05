@@ -21,6 +21,9 @@ import Notifications from "./components/NotificationPlugin";
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
 
+import MaterialKit from "./plugins/material-kit";
+
+
 import Chartist from "chartist";
 
 import store from './store';
@@ -44,6 +47,7 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$Chartist = Chartist;
 
+Vue.use(MaterialKit);
 Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);

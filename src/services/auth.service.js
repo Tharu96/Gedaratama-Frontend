@@ -60,7 +60,9 @@ class AuthService {
 
   acceptPendingShop(uuid){
     console.log(uuid);
-    return axios.post(API_URL + 'pending_shops/{uuid}');
+    // console.log(API_URL + 'pending_shops/'+uuid);
+    
+    return axios.post(API_URL + 'pending_shops/ba6b31c1-5921-4855-a955-5434b908e163' );
   }
 }
 

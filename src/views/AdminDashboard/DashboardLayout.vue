@@ -33,7 +33,7 @@
       </sidebar-link>
       <sidebar-link to="/upgrade" class="active-pro">
         <md-icon>unarchive</md-icon>
-        <p>Upgrade to PRO</p>
+        <p>Gedaratama Home</p>
       </sidebar-link>
     </side-bar>
 

@@ -100,7 +100,7 @@ export const router = new Router({
           component: UpgradeToPRO
         }
       ]
-    }
+    } 
   ]
 });
 
