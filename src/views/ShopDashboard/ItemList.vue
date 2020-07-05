@@ -3,12 +3,14 @@
     <div class="md-layout">
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <md-card class="md-card-plain">
-          <md-card-header data-background-color="purple">
-            <h4 class="title">Pending Shop Requests</h4>
-            <p class="category">Check Validity of Shops</p>
+          <md-card-header data-background-color="green">
+            <h4 class="title">SHOP ITEMS</h4>
+            <p class="category">Check Validity of Shop Items</p>
           </md-card-header>
           <md-card-content>
             <div>
+
+              <!--
               <md-table v-model="pending_shops" :table-header-color="tableHeaderColor">
                 <md-table-row slot="md-table-row" slot-scope="{ item }">
                   <md-table-cell md-label="Unique User Id">{{ item.uuid }}</md-table-cell>
@@ -48,6 +50,9 @@
                   </md-table-cell>
                 </md-table-row>
               </md-table>
+
+
+              -->
             </div>
           </md-card-content>
         </md-card>

@@ -10,13 +10,13 @@
         <div class="md-layout">
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
-              <label>Company (disabled)</label>
+              <label>Shop (disabled)</label>
               <md-input v-model="disabled" disabled></md-input>
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100 md-size-33">
             <md-field>
-              <label>User Name</label>
+              <label>Shop Name</label>
               <md-input v-model="username" type="text"></md-input>
             </md-field>
           </div>
@@ -64,7 +64,7 @@
           </div>
           <div class="md-layout-item md-size-100">
             <md-field maxlength="5">
-              <label>About Me</label>
+              <label>About Shop</label>
               <md-textarea v-model="aboutme"></md-textarea>
             </md-field>
           </div>
@@ -97,7 +97,7 @@ export default {
       country: null,
       code: null,
       aboutme:
-        "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
+        "Short description about shop"
     };
   }
 };
