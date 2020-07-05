@@ -8,7 +8,7 @@
           :chart-data="dailySalesChart.data"
           :chart-options="dailySalesChart.options"
           :chart-type="'Line'"
-          data-background-color="green"
+          data-background-color="blue"
         >
           <template slot="content">
             <h4 class="title">Daily Sales</h4>
@@ -36,7 +36,7 @@
           :chart-options="emailsSubscriptionChart.options"
           :chart-responsive-options="emailsSubscriptionChart.responsiveOptions"
           :chart-type="'Bar'"
-          data-background-color="green"
+          data-background-color="purple"
         >
           <template slot="content">
             <h4 class="title">Email Subscription</h4>
@@ -60,7 +60,7 @@
           :chart-data="dataCompletedTasksChart.data"
           :chart-options="dataCompletedTasksChart.options"
           :chart-type="'Line'"
-          data-background-color="green"
+          data-background-color="blue"
         >
           <template slot="content">
             <h4 class="title">Completed Tasks</h4>
@@ -80,7 +80,7 @@
       <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
-        <stats-card data-background-color="green">
+        <stats-card data-background-color="blue">
           <template slot="header">
             <md-icon>store</md-icon>
           </template>
@@ -101,7 +101,7 @@
       <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
-        <stats-card data-background-color="green">
+        <stats-card data-background-color="blue">
           <template slot="header">
             <md-icon>content_copy</md-icon>
           </template>
@@ -125,7 +125,7 @@
       <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
-        <stats-card data-background-color="green">
+        <stats-card data-background-color="blue">
           <template slot="header">
             <md-icon>info_outline</md-icon>
           </template>
@@ -135,18 +135,18 @@
             <h3 class="title">75</h3>
           </template>
 
-          <template slot="footer">
+          <!-- <template slot="footer">
             <div class="stats">
               <md-icon>local_offer</md-icon>
               Tracked from Github
             </div>
-          </template>
+          </template> -->
         </stats-card>
       </div>
       <div
         class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25"
       >
-        <stats-card data-background-color="green">
+        <stats-card data-background-color="blue">
           <template slot="header">
             <i class="fab fa-twitter"></i>
           </template>
@@ -168,12 +168,12 @@
         class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
       >
         <md-card>
-          <md-card-header data-background-color="green">
+          <md-card-header data-background-color="purple">
             <h4 class="title">Employees Stats</h4>
             <p class="category">New employees on 15th September, 2016</p>
           </md-card-header>
           <md-card-content>
-            <ordered-table table-header-color="green"></ordered-table>
+            <ordered-table table-header-color="purple"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
