@@ -35,10 +35,10 @@
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/upgrade" class="active-pro">
+      <!-- <sidebar-link to="/upgrade" class="active-pro">
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
-      </sidebar-link>
+      </sidebar-link> -->
     </side-bar>
 
     <div class="main-panel">
@@ -75,7 +75,7 @@ export default {
   data() {
     return {
       sidebarBackground: "blue",
-      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg")
+      sidebarBackgroundImage: require("@/assets/img/organic-food.jpg")
     };
   }
 };

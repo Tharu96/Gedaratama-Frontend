@@ -135,12 +135,12 @@
             <h3 class="title">75</h3>
           </template>
 
-          <template slot="footer">
+          <!-- <template slot="footer">
             <div class="stats">
               <md-icon>local_offer</md-icon>
               Tracked from Github
             </div>
-          </template>
+          </template> -->
         </stats-card>
       </div>
       <div

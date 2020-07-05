@@ -5,23 +5,12 @@ import Login from './views/Login.vue';
 import ShopRegister from './views/Signup_Shop.vue';
 
 import Dashboard from './views/AdminDashboard/Dashboard.vue';
-//import UserProfile from './views/AdminDashboard/UserProfile.vue';
-import UserProfile from './views/ShopDashboard/UserProfile.vue';
+import UserProfile from './views/AdminDashboard/UserProfile.vue';
 import TableList from './views/AdminDashboard/Pending_shops.vue';
 import Typography from './views/AdminDashboard/Typography.vue';
 import Icons from './views/AdminDashboard/Icons.vue';
 import Notifications from './views/AdminDashboard/Notifications.vue';
 import UpgradeToPRO from './views/AdminDashboard/UpgradeToPRO.vue';
-
-
-//
-import ShopDashboard from './views/ShopDashboard/Dashboard.vue';
-import ShopProfile from './views/ShopDashboard/UserProfile.vue';
-import ItemList from './views/ShopDashboard/ItemList.vue';
-import Orders from './views/ShopDashboard/Typography.vue';
-// import Icons from './views/ShopDashboard/Icons.vue';
-// import Notifications from './views/ShopDashboard/Notifications.vue';
-// import UpgradeToPRO from './views/ShopDashboard/UpgradeToPRO.vue';
 
 
 Vue.use(Router);
@@ -72,7 +61,7 @@ export const router = new Router({
       path: '/user',
       name: 'user',
       // lazy-loaded
-      component: () => import('./views/ShopDashboard/DashboardLayout.vue'),
+      component: () => import('./views/AdminDashboard/DashboardLayout.vue'),
       redirect: "/dashboard",
       children: [
         {
@@ -111,55 +100,7 @@ export const router = new Router({
           component: UpgradeToPRO
         }
       ]
-    },
-	
-//
-{
-      path: '/user',
-      name: 'user',
-      // lazy-loaded
-      component: () => import('./views/ShopDashboard/DashboardLayout.vue'),
-      redirect: "/dashboard",
-      children: [
-        {
-          path: "/dashboard",
-          name: "Dashboard",
-          component: ShopDashboard
-        },
-        {
-          path: "/user",
-          name: "Shop Profile",
-          component: ShopProfile
-        },
-        {
-          path: "/item",
-          component: ItemList
-        },
-        {
-          path: "/orders",
-          name: "Orders",
-          component: Orders
-        } ,
-        // {
-        //   path: "/icons",
-        //   name: "Icons",
-        //   component: Icons
-        // },
-
-        // {
-        //   path: "/notifications",
-        //   name: "Notifications",
-        //   component: Notifications
-        // },
-        // {
-        //   path: "/upgrade",
-        //   name: "Upgrade to PRO",
-        //   component: UpgradeToPRO
-        // }
-      ]
-    }
-	
-	
+    } 
   ]
 });
 
