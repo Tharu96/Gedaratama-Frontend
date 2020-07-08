@@ -1,130 +1,59 @@
 <template>
   <div class="content">
     <div class="md-layout">
-      <div class="md-layout-item">
-        <md-card>
+      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
+        <md-card class="md-card-plain">
           <md-card-header data-background-color="green">
-            <h4 class="title">Material Dashboard Heading</h4>
-            <p class="category">Created using Roboto Font Family</p>
+            <h4 class="title">Manage Orders</h4>
+            <p class="category">Check Validity of Shop Items</p>
           </md-card-header>
           <md-card-content>
-            <div id="typography">
-              <div class="title">
-                <h2>Typography</h2>
-              </div>
-              <div class="row">
-                <div class="tim-typo">
-                  <h1>
-                    <span class="tim-note">Header 1</span>The Life of Material
-                    Dashboard
-                  </h1>
-                </div>
-                <div class="tim-typo">
-                  <h2>
-                    <span class="tim-note">Header 2</span>The life of Material
-                    Dashboard
-                  </h2>
-                </div>
-                <div class="tim-typo">
-                  <h3>
-                    <span class="tim-note">Header 3</span>The life of Material
-                    Dashboard
-                  </h3>
-                </div>
-                <div class="tim-typo">
-                  <h4>
-                    <span class="tim-note">Header 4</span>The life of Material
-                    Dashboard
-                  </h4>
-                </div>
-                <div class="tim-typo">
-                  <h5>
-                    <span class="tim-note">Header 5</span>The life of Material
-                    Dashboard
-                  </h5>
-                </div>
-                <div class="tim-typo">
-                  <h6>
-                    <span class="tim-note">Header 6</span>The life of Material
-                    Dashboard
-                  </h6>
-                </div>
-                <div class="tim-typo">
-                  <p>
-                    <span class="tim-note">Paragraph</span>
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers. I understand
-                    culture. I am the nucleus. I think that’s a responsibility
-                    that I have, to push possibilities, to show people, this is
-                    the level that things could be at.
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Quote</span>
-                  <blockquote>
-                    <p>
-                      I will be the leader of a company that ends up being worth
-                      billions of dollars, because I got the answers. I
-                      understand culture. I am the nucleus. I think that’s a
-                      responsibility that I have, to push possibilities, to show
-                      people, this is the level that things could be at.
+            <div>
+
+              
+              <md-table v-model="pending_shops" :table-header-color="tableHeaderColor">
+                <md-table-row slot="md-table-row" slot-scope="{ item }">
+                  <md-table-cell md-label="Item code">{{ item.code }}</md-table-cell>
+                  <md-table-cell md-label="Item Name">{{ item.name }}</md-table-cell>
+                   <md-table-cell md-label="Description">{{ item.description}}</md-table-cell>
+                  <md-table-cell md-label="Price">{{ item.price}}</md-table-cell>
+                  <md-table-cell md-label="Quantiry ">{{ item.qty }}</md-table-cell>
+                  <md-table-cell md-label="Discount">{{ item.discount}}</md-table-cell>
+                  <md-table-cell md-label="Availability">{{ item.availability}}</md-table-cell>
+                 
+                 
+                  <md-table-cell md-label>
+                    <p style="margin:0;">
+                      <a href>
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-sm"
+                          id="ok"
+                          style="border:0;"
+                           @click="acceptPendingShop(item.uuid)"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                      </a>
+
+                      <a href>
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger btn-sm"
+                          id="delete"
+                          style="border:0;"
+                          onclick="return confirm('Are you sure you want to delete?')"
+                        >
+                          <i class="material-icons">delete_forever</i>
+                        </button>
+                      </a>
                     </p>
-                    <small>
-                      Kanye West, Musician
-                    </small>
-                  </blockquote>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Muted Text</span>
-                  <p class="text-muted">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Primary Text</span>
-                  <p class="text-primary">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Info Text</span>
-                  <p class="text-info">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Success Text</span>
-                  <p class="text-success">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Warning Text</span>
-                  <p class="text-warning">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Danger Text</span>
-                  <p class="text-danger">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <h2>
-                    <span class="tim-note">Small Tag</span>
-                    Header with small subtitle
-                    <br />
-                    <small>Use "small" tag for the headers</small>
-                  </h2>
-                </div>
-              </div>
+                  </md-table-cell>
+                </md-table-row>
+              </md-table>
+
+
+            
             </div>
           </md-card-content>
         </md-card>
@@ -134,12 +63,94 @@
 </template>
 
 <script>
+import AuthService from "./auth.service";
 export default {
   props: {
-    dataBackgroundColor: {
+    tableHeaderColor: {
       type: String,
       default: ""
     }
+  },
+  data() {
+    return {
+      pending_shops:[],
+       items: [
+        {
+          code: "I001",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code: "I002",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code: "I003",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code:"I004",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        }
+      ],
+       successful: false,
+      message: ""
+    };
+  },
+
+  methods: {
+    retrievePendingShops() {
+      AuthService.getAllPendingShops()
+        .then(response => {
+          this.pending_shops = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    acceptPendingShop(uuid){
+      console.log(uuid);
+       this.message = "";
+       AuthService.acceptPendingShop(uuid)
+        .then(data => {
+              this.message = data.message;
+              this.successful = true;
+            },
+            error => {
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+              this.successful = false;
+            }
+        )
+
+    }
+  },
+
+  mounted() {
+    this.retrievePendingShops();
   }
 };
 </script>

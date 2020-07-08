@@ -10,17 +10,18 @@
           <md-card-content>
             <div>
 
-              <!--
+              
               <md-table v-model="pending_shops" :table-header-color="tableHeaderColor">
                 <md-table-row slot="md-table-row" slot-scope="{ item }">
-                  <md-table-cell md-label="Unique User Id">{{ item.uuid }}</md-table-cell>
-                  <md-table-cell md-label="Shop Name">{{ item.shop_name }}</md-table-cell>
-                  <md-table-cell md-label="Location">{{ item.location}}</md-table-cell>
-                  <md-table-cell md-label="Shop Owner">{{ item.shop_owner_name }}</md-table-cell>
-                  <md-table-cell md-label="Business Reg. No">{{ item.businessRegNo}}</md-table-cell>
-                  <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
-                  <md-table-cell md-label="NIC">{{ item.nic}}</md-table-cell>
-                  <md-table-cell md-label="Mobile No">{{ item.mobile_no }}</md-table-cell>
+                  <md-table-cell md-label="Item code">{{ item.code }}</md-table-cell>
+                  <md-table-cell md-label="Item Name">{{ item.name }}</md-table-cell>
+                   <md-table-cell md-label="Description">{{ item.description}}</md-table-cell>
+                  <md-table-cell md-label="Price">{{ item.price}}</md-table-cell>
+                  <md-table-cell md-label="Quantiry ">{{ item.qty }}</md-table-cell>
+                  <md-table-cell md-label="Discount">{{ item.discount}}</md-table-cell>
+                  <md-table-cell md-label="Availability">{{ item.availability}}</md-table-cell>
+                 
+                 
                   <md-table-cell md-label>
                     <p style="margin:0;">
                       <a href>
@@ -31,7 +32,7 @@
                           style="border:0;"
                            @click="acceptPendingShop(item.uuid)"
                         >
-                          <i class="material-icons">done</i>
+                          <i class="material-icons">edit</i>
                         </button>
                       </a>
 
@@ -52,7 +53,7 @@
               </md-table>
 
 
-              -->
+            
             </div>
           </md-card-content>
         </md-card>
@@ -73,6 +74,44 @@ export default {
   data() {
     return {
       pending_shops:[],
+       items: [
+        {
+          code: "I001",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code: "I002",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code: "I003",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code:"I004",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        }
+      ],
        successful: false,
       message: ""
     };

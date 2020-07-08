@@ -1,163 +1,178 @@
-<login-card header-color="green">
-              <h4 slot="title" class="card-title">Register Your Shop</h4>
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
+import Login from './views/Login.vue';
+import ShopRegister from './views/Signup_Shop.vue';
 
-              <p slot="description" class="description"></p>
+import Dashboard from './views/AdminDashboard/Dashboard.vue';
+//import UserProfile from './views/AdminDashboard/UserProfile.vue';
+import UserProfile from './views/ShopDashboard/UserProfile.vue';
+import TableList from './views/AdminDashboard/Pending_shops.vue';
+import Typography from './views/AdminDashboard/Typography.vue';
+import Icons from './views/AdminDashboard/Icons.vue';
+import Notifications from './views/AdminDashboard/Notifications.vue';
+import UpgradeToPRO from './views/AdminDashboard/UpgradeToPRO.vue';
 
-              <div v-if="!successful">
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Shop Name...
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.shopname"
-                    v-validate="'required|min:3|max:20'"
-                    type="text"
-                    class="form-control"
-                    name="shopname"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('shopname')"
-                    class="alert-danger"
-                  >{{errors.first('shopname')}}</div>
-                </md-field>
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Location of the Shop
-                    <span class="text-danger">*</span>
-                  </label>
+//
+import ShopDashboard from './views/ShopDashboard/Dashboard.vue';
+import ShopProfile from './views/ShopDashboard/UserProfile.vue';
+import ItemList from './views/ShopDashboard/ItemList.vue';
+import Orders from './views/ShopDashboard/Typography.vue';
+// import Icons from './views/ShopDashboard/Icons.vue';
+// import Notifications from './views/ShopDashboard/Notifications.vue';
+// import UpgradeToPRO from './views/ShopDashboard/UpgradeToPRO.vue';
 
-                  <md-input
-                    v-model="shop.location"
-                    v-validate="'required|max:40'"
-                    type="text"
-                    class="form-control"
-                    name="location"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('location')"
-                    class="alert-danger"
-                  >{{errors.first('location')}}</div>
-                </md-field>
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Business Registration No
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.bid"
-                    v-validate="'required|min:3|max:20'"
-                    type="bid"
-                    class="form-control"
-                    name="bid"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('bid')"
-                    class="alert-danger"
-                  >{{errors.first('bid')}}</div>
-                </md-field>
+Vue.use(Router);
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Email
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.email"
-                    v-validate="'required|email|max:50'"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('email')"
-                    class="alert-danger"
-                  >{{errors.first('email')}}</div>
-                </md-field>
+export const router = new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/home',
+      component: Home
+    },
+    {
+      path: '/login',
+      component: Login
+    },
+    // {
+    //   path: '/register',
+    //   component: Register
+    // },
+    {
+      path: '/register',
+      component: ShopRegister
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      // lazy-loaded
+      component: () => import('./views/Profile.vue')
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      // lazy-loaded
+      component: () => import('./views/BoardAdmin.vue')
+    },
+    // {
+    //   path: '/shop',
+    //   name: 'shop',
+    //   // lazy-loaded
+    //   component: () => import('./views/Shop.vue')
+    // },
+    {
+      path: '/user',
+      name: 'user',
+      // lazy-loaded
+      component: () => import('./views/ShopDashboard/DashboardLayout.vue'),
+      redirect: "/dashboard",
+      children: [
+        {
+          path: "/dashboard",
+          name: "Dashboard",
+          component: Dashboard
+        },
+        {
+          path: "/user",
+          name: "User Profile",
+          component: UserProfile
+        },
+        {
+          path: "/table",
+          component: TableList
+        },
+        {
+          path: "/typography",
+          name: "Typography",
+          component: Typography
+        },
+        {
+          path: "/icons",
+          name: "Icons",
+          component: Icons
+        },
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Mobile No
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.mobile_no"
-                    v-validate="'required|min:10|max:10'"
-                    type="text"
-                    class="form-control"
-                    name="mobile_no"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('mobile_no')"
-                    class="alert-danger"
-                  >{{errors.first('mobile_no')}}</div>
-                </md-field>
+        {
+          path: "/notifications",
+          name: "Notifications",
+          component: Notifications
+        },
+        {
+          path: "/upgrade",
+          name: "Upgrade to PRO",
+          component: UpgradeToPRO
+        }
+      ]
+    },
+	
+//
+{
+      path: '/user',
+      name: 'user',
+      // lazy-loaded
+      component: () => import('./views/ShopDashboard/DashboardLayout.vue'),
+      redirect: "/dashboard",
+      children: [
+        {
+          path: "/dashboard",
+          name: "Dashboard",
+          component: ShopDashboard
+        },
+        {
+          path: "/user",
+          name: "Shop Profile",
+          component: ShopProfile
+        },
+        {
+          path: "/item",
+          component: ItemList
+        },
+        {
+          path: "/orders",
+          name: "Orders",
+          component: Orders
+        } ,
+        // {
+        //   path: "/icons",
+        //   name: "Icons",
+        //   component: Icons
+        // },
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Shop Owner Name
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.shop_owner_name"
-                    v-validate="'required|min:3|max:20'"
-                    type="text"
-                    class="form-control"
-                    name="shop_owner_name"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('shop_owner_name')"
-                    class="alert-danger"
-                  >{{errors.first('shop_owner_name')}}</div>
-                </md-field>
+        // {
+        //   path: "/notifications",
+        //   name: "Notifications",
+        //   component: Notifications
+        // },
+        // {
+        //   path: "/upgrade",
+        //   name: "Upgrade to PRO",
+        //   component: UpgradeToPRO
+        // }
+      ]
+    }
+	
+	
+  ]
+});
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
-                  <label>
-                    Shop Owner NIC
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.nic"
-                    v-validate="'required|min:10|max:10'"
-                    type="nic"
-                    class="form-control"
-                    name="nic"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('nic')"
-                    class="alert-danger"
-                  >{{errors.first('nic')}}</div>
-                </md-field>
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', '/register', '/home'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
 
-                <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>lock_outline</md-icon> -->
-                  <label>
-                    Password
-                    <span class="text-danger">*</span>
-                  </label>
-                  <md-input
-                    v-model="shop.password"
-                    v-validate="'required|min:6|max:40'"
-                    type="password"
-                    
-                    name="password"
-                  ></md-input>
-                  <div
-                    v-if="submitted && errors.has('password')"
-                    class="alert-danger"
-                  >{{errors.first('password')}}</div>
-                </md-field>
-                <md-button slot="footer" v-on:click="handleShopRegister()"  class="md-simple md-success md-lg" :disabled="loading" > 
-                   <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-                REGISTER</md-button>
-              </div>
-            </login-card>
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    next('/login');
+  } else {
+    next();
+  }
+});

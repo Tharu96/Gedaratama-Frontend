@@ -7,9 +7,9 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/dashboard">
+      <sidebar-link to="#">
         <md-icon>dashboard</md-icon>
-        <p>Dashboard</p>
+        <p>Admin Dashboard</p>
       </sidebar-link>
       <sidebar-link to="/user">
         <md-icon>person</md-icon>
@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       sidebarBackground: "blue",
-      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg")
+      sidebarBackgroundImage: require("@/assets/img/homepage4.jpeg")
     };
   }
 };

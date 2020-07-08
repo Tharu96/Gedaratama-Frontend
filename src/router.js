@@ -10,7 +10,13 @@ import TableList from './views/AdminDashboard/Pending_shops.vue';
 import Typography from './views/AdminDashboard/Typography.vue';
 import Icons from './views/AdminDashboard/Icons.vue';
 import Notifications from './views/AdminDashboard/Notifications.vue';
-import UpgradeToPRO from './views/AdminDashboard/UpgradeToPRO.vue';
+import UpgradeToPRO from './views/ShopDashboard/UpgradeToPRO.vue';
+
+
+import ShopDashboard from './views/ShopDashboard/Dashboard.vue';
+import ShopProfile from './views/ShopDashboard/UserProfile.vue';
+import ItemList from './views/ShopDashboard/ItemList.vue';
+import Orders from './views/ShopDashboard/Typography.vue';
 
 
 Vue.use(Router);
@@ -45,27 +51,71 @@ export const router = new Router({
       // lazy-loaded
       component: () => import('./views/Profile.vue')
     },
+    // {
+    //   path: '/admin',
+    //   name: 'admin',
+    //   // lazy-loaded
+    //   component: () => import('./views/BoardAdmin.vue')
+    // },
+    {
+      path: '/shop',
+      name: 'shop',
+      // lazy-loaded
+      component: () => import('./views/ShopDashboard/DashboardLayout.vue'),
+      redirect: "/shop_dashboard",
+      children: [
+        {
+          path: "/shop_dashboard",
+          name: "ShopDashboard",
+          component: ShopDashboard
+        },
+        {
+          path: "/shop_profile",
+          name: "Shop Profile",
+          component: ShopProfile
+        },
+        {
+          path: "/item",
+          name:"Manage Items",
+          component: ItemList
+        },
+        {
+          path: "/orders",
+          name: "Manage Orders",
+          component: Orders
+        },
+        {
+          path: "/sales",
+          name: "Manage Sales",
+          component: UpgradeToPRO
+        },
+        {
+          path: "/shop_icons",
+          name: "Icons",
+          component: Icons
+        },
+
+        {
+          path: "/shop_notifications",
+          name: "Notifications",
+          component: Notifications
+        },
+        {
+          path: "/upgrade",
+          name: "Upgrade to PRO",
+          component: UpgradeToPRO
+        }
+      ]
+    },
     {
       path: '/admin',
       name: 'admin',
       // lazy-loaded
-      component: () => import('./views/BoardAdmin.vue')
-    },
-    // {
-    //   path: '/shop',
-    //   name: 'shop',
-    //   // lazy-loaded
-    //   component: () => import('./views/Shop.vue')
-    // },
-    {
-      path: '/user',
-      name: 'user',
-      // lazy-loaded
       component: () => import('./views/AdminDashboard/DashboardLayout.vue'),
-      redirect: "/dashboard",
+      redirect: "/admin_dashboard",
       children: [
         {
-          path: "/dashboard",
+          path: "/admin_dashboard",
           name: "Dashboard",
           component: Dashboard
         },

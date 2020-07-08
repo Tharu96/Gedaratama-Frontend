@@ -9,7 +9,7 @@
               Handcrafted by us with <i class="fa fa-heart heart"></i>
             </p>
           </md-card-header>
-          <md-card-content>
+          <!-- <md-card-content>
             <div class="md-layout">
               <div class="md-layout-item md-medium-size-100">
                 <h5>Notifications Style</h5>
@@ -139,7 +139,7 @@
                 </div>
               </div>
             </div>
-          </md-card-content>
+          </md-card-content> -->
         </md-card>
       </div>
     </div>

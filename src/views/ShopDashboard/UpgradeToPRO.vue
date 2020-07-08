@@ -1,105 +1,59 @@
-<!--
 <template>
   <div class="content">
     <div class="md-layout">
-      <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
-        <md-card>
-          <md-card-header data-background-color="purple">
-            <h4 class="title">Vue Material Dashboard PRO</h4>
-            <p class="category">
-              Are you looking for more components? Please check our Premium
-              Version of Vue Material Dashboard.
-            </p>
+      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
+        <md-card class="md-card-plain">
+          <md-card-header data-background-color="green">
+            <h4 class="title">Manage Sales</h4>
+            <p class="category">Sales</p>
           </md-card-header>
-
           <md-card-content>
-            <div class="table-responsive table-upgrade">
-              <table class="table" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th class="text-center">Free</th>
-                    <th class="text-center">PRO</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Components</td>
-                    <td class="text-center">60</td>
-                    <td class="text-center">200</td>
-                  </tr>
-                  <tr>
-                    <td>Plugins</td>
-                    <td class="text-center">2</td>
-                    <td class="text-center">15</td>
-                  </tr>
-                  <tr>
-                    <td>Example Pages</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center">27</td>
-                  </tr>
-                  <tr>
-                    <td>Login, Register, Pricing, Lock Pages</td>
-                    <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
-                    </td>
-                    <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      DataTables, VectorMap, SweetAlert, Wizard,
-                      jQueryValidation, FullCalendar etc...
-                    </td>
-                    <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
-                    </td>
-                    <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Mini Sidebar</td>
-                    <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
-                    </td>
-                    <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Premium Support</td>
-                    <td class="text-center">
-                      <i class="fa fa-times text-danger"></i>
-                    </td>
-                    <td class="text-center">
-                      <i class="fa fa-check text-success"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td class="text-center">Free</td>
-                    <td class="text-center">Just $59</td>
-                  </tr>
-                  <tr>
-                    <td class="text-center"></td>
-                    <td class="text-center">
-                      <md-button href="#" class="md-default md-round" disabled
-                        >Current Version</md-button
-                      >
-                    </td>
-                    <td class="text-center">
-                      <md-button
-                        target="_blank"
-                        href="https://www.creative-tim.com/product/vue-material-dashboard-pro/?ref=vue-md-free-upgrade-live"
-                        class="md-info md-round"
-                        >Upgrade to PRO</md-button
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div>
+
+              
+              <md-table v-model="pending_shops" :table-header-color="tableHeaderColor">
+                <md-table-row slot="md-table-row" slot-scope="{ item }">
+                  <md-table-cell md-label="Item code">{{ item.code }}</md-table-cell>
+                  <md-table-cell md-label="Item Name">{{ item.name }}</md-table-cell>
+                   <md-table-cell md-label="Description">{{ item.description}}</md-table-cell>
+                  <md-table-cell md-label="Price">{{ item.price}}</md-table-cell>
+                  <md-table-cell md-label="Quantiry ">{{ item.qty }}</md-table-cell>
+                  <md-table-cell md-label="Discount">{{ item.discount}}</md-table-cell>
+                  <md-table-cell md-label="Availability">{{ item.availability}}</md-table-cell>
+                 
+                 
+                  <md-table-cell md-label>
+                    <p style="margin:0;">
+                      <a href>
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary btn-sm"
+                          id="ok"
+                          style="border:0;"
+                           @click="acceptPendingShop(item.uuid)"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                      </a>
+
+                      <a href>
+                        <button
+                          type="button"
+                          class="btn btn-outline-danger btn-sm"
+                          id="delete"
+                          style="border:0;"
+                          onclick="return confirm('Are you sure you want to delete?')"
+                        >
+                          <i class="material-icons">delete_forever</i>
+                        </button>
+                      </a>
+                    </p>
+                  </md-table-cell>
+                </md-table-row>
+              </md-table>
+
+
+            
             </div>
           </md-card-content>
         </md-card>
@@ -109,57 +63,94 @@
 </template>
 
 <script>
-export default {};
+import AuthService from "./auth.service";
+export default {
+  props: {
+    tableHeaderColor: {
+      type: String,
+      default: ""
+    }
+  },
+  data() {
+    return {
+      pending_shops:[],
+       items: [
+        {
+          code: "I001",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code: "I002",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code: "I003",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        },
+        {
+          code:"I004",
+          name: "Keeri Samba",
+          price: "LKR 150.00",
+          description:"Araliya keeri Samba 1kG",
+          qty: "300",
+          discount: "5%",
+          availability:"Avaliable"
+        }
+      ],
+       successful: false,
+      message: ""
+    };
+  },
+
+  methods: {
+    retrievePendingShops() {
+      AuthService.getAllPendingShops()
+        .then(response => {
+          this.pending_shops = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    acceptPendingShop(uuid){
+      console.log(uuid);
+       this.message = "";
+       AuthService.acceptPendingShop(uuid)
+        .then(data => {
+              this.message = data.message;
+              this.successful = true;
+            },
+            error => {
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+              this.successful = false;
+            }
+        )
+
+    }
+  },
+
+  mounted() {
+    this.retrievePendingShops();
+  }
+};
 </script>
-
-<style lang="scss" scoped>
-.mx-auto {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.md-card {
-  margin-top: 50px;
-}
-
-.table-responsive {
-  overflow: auto;
-}
-
-.table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 1rem;
-  background-color: transparent;
-
-  thead tr th {
-    font-size: 1.063rem;
-    border-top-width: 0;
-    font-weight: 300;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  & > tbody > tr > td,
-  & > tbody > tr > th,
-  & > tfoot > tr > td,
-  & > tfoot > tr > th,
-  & > thead > tr > td,
-  & > thead > tr > th {
-    padding: 12px 8px;
-    vertical-align: middle;
-  }
-
-  & > tbody > tr {
-    position: relative;
-  }
-
-  td,
-  th {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-  }
-}
-</style>
-
--->

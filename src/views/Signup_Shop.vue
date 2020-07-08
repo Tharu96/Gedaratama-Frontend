@@ -8,14 +8,14 @@
           >
 
           
-            <login-card header-color="green">
+            <login-card header-color="green" >
               <h4 slot="title" class="card-title">Register Your Shop</h4>
 
               <p slot="description" class="description"></p>
 
               
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                   <md-icon>shop</md-icon> 
                   <label>
                     Shop Name...
                     <span class="text-danger">*</span>
@@ -34,7 +34,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                   <md-icon>add_location_alt</md-icon> 
                   <label>
                     Location of the Shop
                     <span class="text-danger">*</span>
@@ -54,7 +54,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                   <md-icon>short_text</md-icon> 
                   <label>
                     Business Registration No
                     <span class="text-danger">*</span>
@@ -73,7 +73,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                  <md-icon>email</md-icon>
                   <label>
                     Email
                     <span class="text-danger">*</span>
@@ -92,7 +92,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                   <md-icon>phonelink_ring</md-icon>
                   <label>
                     Mobile No
                     <span class="text-danger">*</span>
@@ -111,7 +111,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                   <md-icon>person</md-icon>
                   <label>
                     Shop Owner Name
                     <span class="text-danger">*</span>
@@ -130,7 +130,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>email</md-icon> -->
+                  <md-icon>short_text</md-icon>
                   <label>
                     Shop Owner NIC
                     <span class="text-danger">*</span>
@@ -149,7 +149,7 @@
                 </md-field>
 
                 <md-field class="md-form-group" slot="inputs">
-                  <!-- <md-icon>lock_outline</md-icon> -->
+                   <md-icon>lock_outline</md-icon>
                   <label>
                     Password
                     <span class="text-danger">*</span>
@@ -229,6 +229,7 @@ export default {
   },
   methods: {
     handleShopRegister() {
+      this.loading=true;
       this.message = "";
       this.submitted = true;
       this.$validator.validate().then(isValid => {
@@ -237,8 +238,10 @@ export default {
             data => {
               this.message = data.message;
               this.successful = true;
+              
             },
             error => {
+              this.loading=false;
               this.message =
                 (error.response && error.response.data) ||
                 error.message ||
@@ -248,6 +251,7 @@ export default {
           );
         }
       });
+      location.reload;
     }
   }
 };

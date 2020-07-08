@@ -15,7 +15,10 @@
           <router-link to="/shop" class="nav-link">Shop</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
+          <router-link v-if="currentUser" to="/admin" class="nav-link">Admin</router-link>
+        </li>
+       <li class="nav-item">
+          <router-link v-if="currentUser" to="/shop" class="nav-link">Shop</router-link>
         </li>
       </div>
 
