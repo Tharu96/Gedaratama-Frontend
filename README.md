@@ -1,5 +1,6 @@
-# gedaratama
-# Frontend for Home Delivery System with Vuejs
+# Project Name - GEDARATAMA
+# Description - Home Delivery System - Frontend
+# Tech Stack -VueJs
 
 ## Project setup
 ```
