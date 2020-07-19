@@ -1,6 +1,7 @@
-```Project Name - GEDARATAMA
+```
+Project Name - GEDARATAMA
 Description - Home Delivery System - Frontend
-Tech Stack -VueJs```
+Tech Stack -VueJs
 
 ## Project setup
 ```
