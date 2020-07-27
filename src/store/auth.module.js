@@ -13,8 +13,8 @@ export const auth = {
   state: initialState,
   actions: {
     login({ commit }, user) {
-        console.log(user.email);
-        console.log(user.password);
+      console.log(user.email);
+      console.log(user.password);
       return AuthService.login(user).then(
         user => {
           commit('loginSuccess', user);
@@ -31,8 +31,8 @@ export const auth = {
       commit('logout');
     },
     register({ commit }, user) {
-        console.log(user.email);
-        console.log(user.password);
+      console.log(user.email);
+      console.log(user.password);
       return AuthService.register(user).then(
         response => {
           commit('registerSuccess');
@@ -46,23 +46,25 @@ export const auth = {
     },
 
     pendingShopRegister({ commit }, shop) {
-       console.log(shop.shopname);
+      console.log(shop.shopname);
       console.log(shop.email);
-     console.log(shop.password);
-    return AuthService.pendingShopRegister(shop).then(
-      response => {
-        commit('registerSuccess');
-        return Promise.resolve(response.data);
-      },
-      error => {
-        commit('registerFailure');
-        return Promise.reject(error);
-      }
-    );
-  }
+      console.log(shop.password);
+      return AuthService.pendingShopRegister(shop).then(
+        response => {
+          commit('registerSuccess');
+          return Promise.resolve(response.data);
+        },
+        error => {
+          commit('registerFailure');
+          return Promise.reject(error);
+        }
+      );
+    }
   },
+
   mutations: {
     loginSuccess(state, user) {
+      console.log(user);
       state.status.loggedIn = true;
       state.user = user;
     },
@@ -81,4 +83,5 @@ export const auth = {
       state.status.loggedIn = false;
     }
   }
+
 };

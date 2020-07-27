@@ -12,7 +12,7 @@
           <router-link to="/admin" class="nav-link">Admin Board</router-link>
         </li>
         <li v-if="showModeratorBoard" class="nav-item">
-          <router-link to="/shop" class="nav-link">Shop</router-link>
+          <router-link to="/shop" class="nav-link">Shop Board</router-link>
         </li>
         <li class="nav-item">
           <router-link v-if="currentUser" to="/admin" class="nav-link">Admin</router-link>
@@ -74,9 +74,9 @@ export default {
 
       return false;
     },
-    showModeratorBoard() {
+    showShopBoard() {
       if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes("ROLE_MODERATOR");
+        return this.currentUser.roles.includes("ROLE_SHOP");
       }
 
       return false;
