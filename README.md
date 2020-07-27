@@ -1,4 +1,9 @@
 # gedaratama
+```
+Project Name - GEDARATAMA
+Description - Home Delivery System - Frontend
+Tech Stack -VueJs
+```
 
 ## Project setup
 ```
